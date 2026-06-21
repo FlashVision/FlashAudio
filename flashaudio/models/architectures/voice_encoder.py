@@ -188,16 +188,17 @@ class VoiceEncoderModel(nn.Module):
         mel = torch.log(mel.clamp(min=1e-5))
         return mel
 
-    def extract_embedding(self, waveform: torch.Tensor) -> torch.Tensor:
-        """Extract a speaker embedding from a waveform.
+    def extract_embedding(self, audio: torch.Tensor) -> torch.Tensor:
+        """Extract a speaker embedding from audio.
 
         Args:
-            waveform: [samples] or [1, samples] waveform.
+            audio: [samples] waveform, [n_mels, time] mel spectrogram,
+                   or [1, n_mels, time] batched mel.
 
         Returns:
             [embedding_dim] speaker embedding vector.
         """
-        if waveform.dim() == 1:
-            waveform = waveform.unsqueeze(0)
+        if audio.dim() <= 2:
+            audio = audio.unsqueeze(0)
         with torch.no_grad():
-            return self(waveform).squeeze(0)
+            return self(audio).squeeze(0)
