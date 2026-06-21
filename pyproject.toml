@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=70.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flashaudio"
+version = "1.0.0"
+description = "FlashAudio: Production-grade Audio & Speech AI — STT, TTS, voice cloning, audio generation, classification, and analysis"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+    {name = "FlashVision"},
+]
+keywords = ["audio", "speech", "stt", "tts", "voice-cloning", "whisper", "speech-to-text", "text-to-speech", "audio-classification", "pytorch"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+    "Topic :: Multimedia :: Sound/Audio :: Analysis",
+]
+dependencies = [
+    "torch>=2.0.0",
+    "torchaudio>=2.0.0",
+    "transformers>=4.36.0",
+    "numpy>=1.24.0",
+    "PyYAML>=6.0",
+    "tqdm>=4.65.0",
+    "soundfile>=0.12.0",
+    "librosa>=0.10.0",
+]
+
+[project.optional-dependencies]
+analytics = ["matplotlib>=3.7.0", "pandas>=2.0.0"]
+export = ["onnx>=1.14.0", "onnxruntime>=1.15.0"]
+all = [
+    "matplotlib>=3.7.0",
+    "pandas>=2.0.0",
+    "onnx>=1.14.0",
+    "onnxruntime>=1.15.0",
+]
+dev = ["pytest", "ruff", "pre-commit"]
+
+[project.urls]
+Homepage = "https://github.com/FlashVision/FlashAudio"
+Repository = "https://github.com/FlashVision/FlashAudio"
+Issues = "https://github.com/FlashVision/FlashAudio/issues"
+
+[project.scripts]
+flashaudio = "flashaudio.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["flashaudio*"]
+
+[tool.ruff]
+line-length = 120
