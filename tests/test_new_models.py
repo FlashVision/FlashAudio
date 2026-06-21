@@ -1,6 +1,5 @@
 """Tests for new FlashAudio architectures and components."""
 
-import pytest
 import torch
 
 
@@ -185,7 +184,6 @@ class TestSoundEventDetection:
 class TestRegistration:
     def test_models_registered(self):
         from flashaudio.registry import MODELS
-        from flashaudio.models.architectures import HiFiGANGenerator, VITS, Wav2Vec2, ConformerCTC
         assert "HiFiGAN" in MODELS
         assert "VITS" in MODELS
         assert "Wav2Vec2" in MODELS
@@ -193,10 +191,8 @@ class TestRegistration:
 
     def test_emotion_registered(self):
         from flashaudio.registry import MODELS
-        from flashaudio.audio.emotion import EmotionRecognizer
         assert "EmotionRecognition" in MODELS
 
     def test_event_detection_registered(self):
         from flashaudio.registry import MODELS
-        from flashaudio.audio.event_detection import SoundEventDetector
         assert "SoundEventDetector" in MODELS

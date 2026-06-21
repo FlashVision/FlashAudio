@@ -1,6 +1,5 @@
 """Unit tests for audio model architectures."""
 
-import pytest
 import torch
 
 
@@ -102,7 +101,7 @@ class TestLoRA:
             torch.nn.Linear(128, 10),
         )
 
-        original_params = sum(p.numel() for p in model.parameters())
+        _original_params = sum(p.numel() for p in model.parameters())
         model = apply_lora(model, rank=4, alpha=8, target_modules={"0", "2"})
 
         has_lora = any(isinstance(m, LoRALinear) for m in model.modules())

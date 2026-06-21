@@ -6,7 +6,7 @@ speech recognition and synthesis quality.
 
 from __future__ import annotations
 
-from typing import List, Optional, Union
+from typing import List, Union
 
 import numpy as np
 

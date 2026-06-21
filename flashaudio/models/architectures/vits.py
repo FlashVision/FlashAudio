@@ -336,7 +336,7 @@ class VITS(nn.Module):
         """
         text_out = self.text_encoder(text_ids, text_lengths)
         mu = text_out["mu"]
-        log_sigma = text_out["log_sigma"]
+        text_out["log_sigma"]
 
         log_dur = self.duration_predictor(text_out["hidden"].transpose(1, 2))
         durations = torch.clamp(torch.round(torch.exp(log_dur) * length_scale), min=1).long()

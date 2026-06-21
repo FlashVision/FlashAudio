@@ -6,8 +6,6 @@ or unconditional sampling.
 
 from __future__ import annotations
 
-import math
-from pathlib import Path
 from typing import Optional, Union
 
 import torch
@@ -178,7 +176,7 @@ class AudioGenerator:
                 predicted_noise = self.model(x, t)
 
             alpha_t = alphas_cumprod[step]
-            alpha_t_prev = alphas_cumprod[step - 1] if step > 0 else torch.tensor(1.0)
+            alphas_cumprod[step - 1] if step > 0 else torch.tensor(1.0)
 
             x = (1 / torch.sqrt(alphas[step])) * (
                 x - (betas[step] / torch.sqrt(1 - alpha_t)) * predicted_noise

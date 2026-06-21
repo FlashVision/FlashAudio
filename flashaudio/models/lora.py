@@ -7,7 +7,7 @@ while freezing the original weights, reducing trainable parameters.
 from __future__ import annotations
 
 import math
-from typing import Dict, List, Optional, Set
+from typing import Dict, Optional, Set
 
 import torch
 import torch.nn as nn

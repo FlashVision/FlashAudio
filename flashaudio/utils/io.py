@@ -72,7 +72,7 @@ def download_model(
         return path
     except ImportError:
         from transformers import AutoModel
-        model = AutoModel.from_pretrained(model_id, cache_dir=cache_dir)
+        AutoModel.from_pretrained(model_id, cache_dir=cache_dir)
         return str(cache_path)
 
 

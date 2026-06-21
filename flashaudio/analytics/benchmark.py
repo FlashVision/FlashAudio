@@ -7,7 +7,7 @@ metrics for STT, TTS, and classification tasks.
 from __future__ import annotations
 
 import time
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 import torch
 
@@ -89,7 +89,7 @@ class Benchmark:
             "max_latency_ms": round(max_latency, 2),
             "throughput": round(throughput, 4),
             "memory_mb": round(memory_mb, 2),
-            "latencies": [round(l, 2) for l in latencies],
+            "latencies": [round(lat, 2) for lat in latencies],
             "real_time_factor": round(avg_latency / (audio_duration * 1000), 4),
         }
 

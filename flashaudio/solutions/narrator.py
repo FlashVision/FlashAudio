@@ -7,8 +7,7 @@ audio narration with configurable voice and pacing.
 from __future__ import annotations
 
 import re
-from pathlib import Path
-from typing import List, Optional, Union
+from typing import List
 
 import torch
 

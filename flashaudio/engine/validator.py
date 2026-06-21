@@ -6,7 +6,7 @@ metrics (WER, CER, accuracy, loss).
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
+from typing import Dict, List, Optional
 
 import torch
 import torch.nn as nn

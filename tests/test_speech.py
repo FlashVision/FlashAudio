@@ -1,6 +1,5 @@
 """Unit tests for speech and audio pipelines."""
 
-import pytest
 import numpy as np
 import torch
 

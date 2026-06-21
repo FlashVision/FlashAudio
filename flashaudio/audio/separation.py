@@ -31,7 +31,7 @@ class SeparationUNet(nn.Module):
     def __init__(self, num_sources: int = 2, n_fft: int = 1024, channels: int = 32):
         super().__init__()
         self.num_sources = num_sources
-        freq_bins = n_fft // 2 + 1
+        n_fft // 2 + 1
 
         self.encoder = nn.ModuleList([
             self._conv_block(1, channels),

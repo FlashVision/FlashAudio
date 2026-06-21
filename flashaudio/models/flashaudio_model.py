@@ -6,7 +6,7 @@ interface that routes by task (stt, tts, classification, features).
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Optional
 
 import torch
 import torch.nn as nn

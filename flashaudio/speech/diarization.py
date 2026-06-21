@@ -148,7 +148,6 @@ class SpeakerDiarizer:
         similarity = torch.mm(embeddings_norm, embeddings_norm.t()).cpu().numpy()
 
         labels = list(range(n))
-        next_label = n
 
         if self.num_speakers:
             target_clusters = self.num_speakers
@@ -165,8 +164,8 @@ class SpeakerDiarizer:
             for i_idx, li in enumerate(unique_labels):
                 for j_idx in range(i_idx + 1, len(unique_labels)):
                     lj = unique_labels[j_idx]
-                    members_i = [k for k, l in enumerate(labels) if l == li]
-                    members_j = [k for k, l in enumerate(labels) if l == lj]
+                    members_i = [k for k, lbl in enumerate(labels) if lbl == li]
+                    members_j = [k for k, lbl in enumerate(labels) if lbl == lj]
 
                     avg_sim = np.mean([similarity[a][b] for a in members_i for b in members_j])
                     if avg_sim > max_sim:
@@ -185,11 +184,11 @@ class SpeakerDiarizer:
         label_map = {}
         counter = 0
         result = []
-        for l in labels:
-            if l not in label_map:
-                label_map[l] = counter
+        for lbl in labels:
+            if lbl not in label_map:
+                label_map[lbl] = counter
                 counter += 1
-            result.append(label_map[l])
+            result.append(label_map[lbl])
 
         return result
 

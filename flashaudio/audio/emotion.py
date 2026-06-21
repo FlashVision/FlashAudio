@@ -10,7 +10,7 @@ Reference: General SER approaches using deep learning on speech features.
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, Optional
 
 import torch
 import torch.nn as nn
@@ -35,8 +35,8 @@ class MultiScaleConvBlock(nn.Module):
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         s = self.conv_small(x)
         m = self.conv_med(x)
-        l = self.conv_large(x)
-        return F.relu(self.bn(torch.cat([s, m, l], dim=1)), inplace=True)
+        lg = self.conv_large(x)
+        return F.relu(self.bn(torch.cat([s, m, lg], dim=1)), inplace=True)
 
 
 class TemporalAttentionPooling(nn.Module):

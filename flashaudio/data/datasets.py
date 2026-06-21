@@ -6,12 +6,10 @@ a uniform interface returning (waveform, sample_rate, metadata) tuples.
 
 from __future__ import annotations
 
-import os
 from pathlib import Path
-from typing import Callable, Dict, List, Optional, Tuple, Union
+from typing import Callable, Dict, List, Optional
 
 import torch
-import torchaudio
 from torch.utils.data import Dataset
 
 from flashaudio.data.audio_utils import load_audio, pad_or_trim
@@ -201,7 +199,7 @@ class AudioSetDataset(Dataset):
                     filename, labels_str = parts
                     audio_path = self.root / filename.strip()
                     if audio_path.exists():
-                        labels = [l.strip() for l in labels_str.split(",")]
+                        labels = [lbl.strip() for lbl in labels_str.split(",")]
                         self.samples.append({
                             "audio_path": str(audio_path),
                             "labels": labels,
@@ -209,7 +207,7 @@ class AudioSetDataset(Dataset):
 
     def _encode_labels(self, labels: List[str]) -> torch.Tensor:
         """Encode string labels to a multi-hot vector."""
-        label_to_idx = {l: i for i, l in enumerate(self.AUDIOSET_LABELS)}
+        label_to_idx = {lbl: i for i, lbl in enumerate(self.AUDIOSET_LABELS)}
         vector = torch.zeros(self.num_labels)
         for label in labels:
             if label in label_to_idx:

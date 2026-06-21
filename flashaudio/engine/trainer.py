@@ -9,7 +9,7 @@ from __future__ import annotations
 import os
 import time
 from pathlib import Path
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional
 
 import torch
 import torch.nn as nn
@@ -273,7 +273,7 @@ class Trainer:
             Dictionary with training history and final metrics.
         """
         print(f"\n{'='*60}")
-        print(f"  FlashAudio Training")
+        print("  FlashAudio Training")
         print(f"{'='*60}")
         print(f"  Model:      {self.model_id}")
         print(f"  Epochs:     {self.epochs}")
